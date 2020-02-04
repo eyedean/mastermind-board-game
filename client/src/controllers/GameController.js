@@ -1,8 +1,11 @@
 import axios from "axios";
 
 export default class GameController {
-	constructor() {
+	constructor(configs) {
 		this.secret = [];
+		this.N = configs.NumberOfItems;
+		this.K = configs.MaximumOption;
+		this.attemptsRemained = configs.MaximumAttempts;
 		this.hasWon = false;
 		this.hasLost = false;
 	}
@@ -36,11 +39,16 @@ export default class GameController {
 		return this.secret;
 	}
 
+	isOver() {
+		return (this.hasWon || this.hasLost);
+	}
+
 	evaluateInput(input) {
 		
 		if(this.hasWon || this.hasLost) {
 			return " You can not have anymore tries";
 			// also I need a funtion to stop allowing submitting
+
 		}
 		
 		let exact = 0;
@@ -51,6 +59,29 @@ export default class GameController {
 				exact++
 			}
 		}
+
+		for (let value = 0; value <= this.K; value++) {
+
+			let needed = 0;
+			let given = 0;
+
+			for (let i = 0; i < this.N; i++) {
+				if(this.secret[i] === value) {
+					needed++;
+				}
+			}
+
+			for (let i = 0; i < this.N; i++) {
+				if(input[i] === value) {
+					given ++;
+				}
+			}
+
+			let matched = Math.min(needed, given);
+			partial += matched;
+		}
+
+		partial -= exact;
 	}
 
 };
