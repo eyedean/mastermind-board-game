@@ -3,6 +3,8 @@ import axios from "axios";
 export default class GameController {
 	constructor() {
 		this.secret = [];
+		this.hasWon = false;
+		this.hasLost = false;
 	}
 
 
@@ -34,7 +36,18 @@ export default class GameController {
 		return this.secret;
 	}
 
+	evaluateInput(input) {
+		
+		if(this.hasWon || this.hasLost) {
+			return " You can not have anymore tries";
+			// also I need a funtion to stop allowing submitting
+		}
+		
+	}
+
 };
+
+
 
 
 
