@@ -41,7 +41,7 @@ class MainBoard extends React.Component {
 								<Feedback message={this.state.feedback}/>
 							</td>
 						</tr>
-						<tr>
+						<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
 							<td>
 							<Keypad maxlength={this.configs.NumberOfItems} 
 								onSubmitCallback={this.onSubmitCallback}/>
