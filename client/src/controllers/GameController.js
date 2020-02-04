@@ -43,6 +43,14 @@ export default class GameController {
 			// also I need a funtion to stop allowing submitting
 		}
 		
+		let exact = 0;
+		let partial = 0;
+
+		for (let i = 0; i < this.N; i++) {
+			if ( this.secret[i] === input[i]) {
+				exact++
+			}
+		}
 	}
 
 };
