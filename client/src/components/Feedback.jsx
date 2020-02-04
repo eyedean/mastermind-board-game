@@ -6,7 +6,7 @@ class Feedback extends React.Component {
 			<div>
 				<ol>
 					{
-						this.props.meassage.map((msg, i) => {
+						this.props.message.map((msg, i) => {
 							return(<li key={i}>{ msg }</li>)
 						})
 					}
