@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class GameController {
 	constructor() {
-
+		this.secret = [];
 	}
 
 
@@ -26,13 +26,14 @@ export default class GameController {
 					.trim()
 					.split("\n")
 					.map((x) => parseInt(x, 10));
-				
-					console.log(result);
-
-			}).catch((error) => {
-				console.log(error);
+				this.secret = result;
 			});
 	}
+
+	getSecret() {
+		return this.secret;
+	}
+
 };
 
 
