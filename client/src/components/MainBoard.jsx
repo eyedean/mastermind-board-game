@@ -6,7 +6,10 @@ class MainBoard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
-		this.controller = new GameController();
+		this.controller = new GameController();	
+	}
+
+	componentDidMount() {
 		this.controller.setUp();
 	}
 
