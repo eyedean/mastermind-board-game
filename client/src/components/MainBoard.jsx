@@ -1,6 +1,8 @@
 import React from 'react';
 import Keypad from './Keypad';
+import Feedback from './Feedback';
 import GameController from '../controllers/GameController';
+
 
 class MainBoard extends React.Component {
 	constructor(props) {

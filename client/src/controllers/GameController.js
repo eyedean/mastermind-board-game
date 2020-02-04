@@ -82,6 +82,24 @@ export default class GameController {
 		}
 
 		partial -= exact;
+
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		this.attemptsRemained--;
+
+		const secretString = this.secret.join('');
+
+		if(exact === this.N) {
+			this.hasWon = true;
+			return `You Won! 🥳 It was ${secretString}!`;
+		}
+
+		if (this.attemptsRemained === 0) {
+			this.hasLost = true;
+			return `You Lost... 🙄 It was ${secretString}!`;
+		}
+
+		const emojis = ["🤭", "🤔", "😇", "😉", "🤩"];
+		return `You have got ${exact} exact(s), and ${partial} partial(s) for ${input}!` + emojis[exact + partial];
 	}
 
 };
