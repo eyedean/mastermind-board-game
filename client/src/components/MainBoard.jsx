@@ -14,12 +14,14 @@ class MainBoard extends React.Component {
 			MaximumAttempts : 10
 		}
 		this.controller = new GameController(this.configs);
+		this.state.loading = true;
 		this.onSubmitCallback = this.onSubmitCallback.bind(this);
 		
 	}
 
 	componentDidMount() {
-		this.controller.setUp();
+		this.controller.setUp().then(() =>
+		this.setState({ loading: false}));
 	}
 
 	onSubmitCallback(input) {
@@ -32,7 +34,9 @@ class MainBoard extends React.Component {
 
 
 	render () {
-		return (
+		return this.state.loading ? (
+			<div>Loading...</div>
+		) : (
 			<div>
 				<table>
 					<tbody>
