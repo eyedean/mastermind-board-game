@@ -9,7 +9,7 @@ import numbersImg from '../img/numbers.jpg';
 class MainBoard extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { page: "LOADING", feedback: [] };
+		this.state = { page: "INTRO", feedback: [] };
 		this.configs = {
 			NumberOfItems: 4,
 			MaximumOptions : 7,
@@ -29,10 +29,6 @@ class MainBoard extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-		this.initialize();
-	}
-
 	onSubmitCallback(input) {
 		const result = this.controller.evaluateInput(input);
 		this.setState({
@@ -44,16 +40,23 @@ class MainBoard extends React.Component {
 		this.initialize()
 	}
 	
-	onDifficultyCallback(input) {
-		const result = this.controller.chooseLevel(input);
-		this.setState({
+	onDifficultyCallback(level) { // "EASY", "MEDIUM", "HARD"
+		console.log(`Setting level to: ${level}`);
+		// const result = this.controller.chooseLevel(input);
+		// this.setState({
 			
-		});
+		// });
 	}
 
 	render () {
 		return this.state.page === "LOADING" ? (
 			<div>Loading...</div>
+		) : this.state.page === "INTRO" ? (
+			<div>
+				<h2>Intro</h2>
+				<Difficulty onDifficultyCallback={this.onDifficultyCallback}			
+				/>
+			</div>
 		) : (
 			<div style={{background: `url(${numbersImg})`, minHeight: '100vh'}}>
 				<table>
@@ -66,15 +69,6 @@ class MainBoard extends React.Component {
 							/>
 							</td>
 						</tr>
-
-						<tr>
-							<td>
-								<Difficulty difficulty={this.controller.chooseLevel()}
-											onDifficultyCallback={this.onDifficultyCallback}			
-								/>
-							</td>
-						</tr>
-
 						<tr>
 							<td>
 								<Feedback message={this.state.feedback} 
@@ -82,7 +76,6 @@ class MainBoard extends React.Component {
 								/>
 							</td>
 						</tr>
-
 						<tr>
 							<td>
 								<Replay onReplayCallback={this.onReplayCallback}/>

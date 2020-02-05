@@ -9,7 +9,8 @@ class Difficulty extends React.Component {
 
 
 	handleLevel(event) {
-		this.props.onDifficultyCallback();
+		const level = event.target.value;
+		this.props.onDifficultyCallback(level);
 		event.preventDefault();
 	}
 
@@ -17,7 +18,10 @@ class Difficulty extends React.Component {
 		return(
 			<div>
 				Choose Difficulty
-				<input type="submit" value="difficulty" onClick={this.handleLevel}/>
+				<br/>
+				<input type="submit" value="EASY" onClick={this.handleLevel}/>
+				<input type="submit" value="MEDIUM" onClick={this.handleLevel}/>
+				<input type="submit" value="HARD" onClick={this.handleLevel}/>
 			</div>
 		);
 	}
