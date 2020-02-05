@@ -1,6 +1,7 @@
 import React from "react";
 
 class Feedback extends React.Component {
+	
 	render() {
 		return (
 			<div>
@@ -11,10 +12,12 @@ class Feedback extends React.Component {
 						})
 					}
 				</ol>
-
+									
+				Remained Attempt(s): {this.props.remainedAttempts}
 			</div>
 		)
 	}
 }
 
 export default Feedback;
+

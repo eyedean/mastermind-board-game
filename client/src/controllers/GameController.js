@@ -4,7 +4,7 @@ export default class GameController {
 	constructor(configs) {
 		this.secret = [];
 		this.N = configs.NumberOfItems;
-		this.K = configs.MaximumOption;
+		this.K = configs.MaximumOptions;
 		this.attemptsRemained = configs.MaximumAttempts;
 		this.hasWon = false;
 		this.hasLost = false;
@@ -43,12 +43,15 @@ export default class GameController {
 		return (this.hasWon || this.hasLost);
 	}
 
-	evaluateInput(input) {
-		
+	getRemainedAttempts() {
+		return this.attemptsRemained;
+	}
+
+	evaluateInput(inputString) {
+		const input = inputString.split("").map((x) => parseInt(x, 10));
+
 		if(this.hasWon || this.hasLost) {
 			return " You can not have anymore tries";
-			// also I need a funtion to stop allowing submitting
-
 		}
 		
 		let exact = 0;
@@ -80,7 +83,6 @@ export default class GameController {
 			let matched = Math.min(needed, given);
 			partial += matched;
 		}
-
 		partial -= exact;
 
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,7 +101,7 @@ export default class GameController {
 		}
 
 		const emojis = ["🤭", "🤔", "😇", "😉", "🤩"];
-		return `You have got ${exact} exact(s), and ${partial} partial(s) for ${input}!` + emojis[exact + partial];
+		return `You have got ${exact} exact(s), and ${partial} partial(s) for ${inputString}!` + emojis[exact + partial];
 	}
 
 };

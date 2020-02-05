@@ -7,21 +7,20 @@ import GameController from '../controllers/GameController';
 class MainBoard extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { feedback: [] };
+		this.state = { loading: true, feedback: [] };
 		this.configs = {
 			NumberOfItems: 4,
 			MaximumOptions : 7,
 			MaximumAttempts : 10
 		}
 		this.controller = new GameController(this.configs);
-		this.state.loading = true;
-		this.onSubmitCallback = this.onSubmitCallback.bind(this);
-		
+		this.onSubmitCallback = this.onSubmitCallback.bind(this);	
 	}
 
 	componentDidMount() {
 		this.controller.setUp().then(() =>
-		this.setState({ loading: false}));
+			this.setState({ loading: false})
+		);
 	}
 
 	onSubmitCallback(input) {
@@ -42,17 +41,21 @@ class MainBoard extends React.Component {
 					<tbody>
 						<tr>
 							<td>
-								<Feedback message={this.state.feedback}/>
+								<Feedback message={this.state.feedback} 
+										 remainedAttempts={this.controller.getRemainedAttempts()}
+								/>
 							</td>
 						</tr>
 						<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
 							<td>
 							<Keypad maxlength={this.configs.NumberOfItems} 
-								onSubmitCallback={this.onSubmitCallback}/>
+								onSubmitCallback={this.onSubmitCallback} 
+							/>
 							</td>
 						</tr>
 					</tbody>
 				</table>
+				<div></div>
 			</div>
 		)
 	}
