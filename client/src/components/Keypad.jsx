@@ -24,6 +24,7 @@ class Keypad extends React.Component {
 	render() {
 		return (
 			<div>
+				<h1>Mastermind Game</h1>
 				<h3>Guess The Number</h3>
 				<form onSubmit={this.handleSubmit}>
 					<label>

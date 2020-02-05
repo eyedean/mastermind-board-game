@@ -3,7 +3,7 @@ import Keypad from './Keypad';
 import Feedback from './Feedback';
 import Replay from './Replay';
 import GameController from '../controllers/GameController';
-
+import numbersImg from '../img/numbers.jpg'
 
 class MainBoard extends React.Component {
 	constructor(props) {
@@ -47,21 +47,21 @@ class MainBoard extends React.Component {
 		return this.state.loading ? (
 			<div>Loading...</div>
 		) : (
-			<div>
+			<div style={{background: `url(${numbersImg})`, minHeight: '100vh'}}>
 				<table>
 					<tbody>
-						<tr>
-							<td>
-								<Feedback message={this.state.feedback} 
-										 remainedAttempts={this.controller.getRemainedAttempts()}
-								/>
-							</td>
-						</tr>
 						<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
 							<td>
 							<Keypad maxlength={this.configs.NumberOfItems} 
 								onSubmitCallback={this.onSubmitCallback} 
 							/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<Feedback message={this.state.feedback} 
+										 remainedAttempts={this.controller.getRemainedAttempts()}
+								/>
 							</td>
 						</tr>
 						<tr>
