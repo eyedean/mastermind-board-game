@@ -2,26 +2,62 @@ import axios from 'axios';
 
 export default class GameController {
 	
-	constructor(configs) {
-		this.N = configs.NumberOfItems;
-		this.K = configs.MaximumOptions;
-		this.maxAttemptsReset = configs.MaximumAttempts;
+	constructor() {
+		this.N = 0;
+		this.K = 0;
+		this.maxAttemptsReset = 0;
 		this.secret = [];
 		this.hasWon = false;
 		this.hasLost = false;
 		this.attemptsRemained = 0;
 	}
 
+	getNumberOfItems() {
+		return this.N;
+	}
 
-	setUp() {
+	getMaxOptions() {
+		return this.K;
+	}
+
+	getRemainedAttempts() {
+		return this.attemptsRemained;
+	}
+
+	setConfigs(level) {
+		switch (level) {
+			case "EASY":
+				this.N 	= 3;
+				this.K = 5;
+				this.maxAttemptsReset = 10;
+				break;
+
+			case "MEDIUM":
+				this.N 	= 4;
+				this.K = 7;
+				this.maxAttemptsReset = 10;
+				break;
+
+			case "HARD":
+				this.N 	= 5;
+				this.K = 9;
+				this.maxAttemptsReset = 12;
+				break;
+		}
+	}
+
+
+	setUp(level) {
+		this.setConfigs(level);
+
 		this.attemptsRemained = this.maxAttemptsReset;
 		this.hasWon = false;
 		this.hasLost = false;
 		
 		const queryParams = {
-			num: 4,
+			num: this.N,
 			min: 0,
-			max: 7,
+			max: this.K,
 			col: 1,
 			base: 10,
 			format: "plain",
@@ -41,16 +77,13 @@ export default class GameController {
 			});
 	}
 
-	getSecret() {
-		return this.secret;
-	}
+	// NOTE: for debugging only
+	// getSecret() {
+	// 	return this.secret;
+	// }
 
 	isOver() {
 		return (this.hasWon || this.hasLost);
-	}
-
-	getRemainedAttempts() {
-		return this.attemptsRemained;
 	}
 
 	evaluateInput(inputString) {
@@ -109,37 +142,4 @@ export default class GameController {
 		const emojis = ["🤭", "🤔", "😇", "😉", "🤩"];
 		return `You have got ${exact} exact(s), and ${partial} partial(s) for ${inputString}!` + emojis[exact + partial];
 	}
-
-	chooseLevel() {
-		
-		const easy = "";
-		this.configs = {
-			NumberOfItems: 4,
-			MaximumOptions : 7,
-			MaximumAttempts : 10
-		}
-
-		const medium ="";
-		this.configs = {
-			NumberOfItems: 4,
-			MaximumOptions : 7,
-			MaximumAttempts : 7
-		}
-
-		const hard ="";
-		this.configs = {
-			NumberOfItems: 5,
-			MaximumOptions : 10,
-			MaximumAttempts : 10
-		}
-	}
-
 };
-
-
-
-
-
-
-
-

@@ -8,7 +8,11 @@ class Feedback extends React.Component {
 				<ol >
 					{
 						this.props.message.map((msg, i) => {
-							return(<span className="d-block p-2 bg-primary text-white"><li key={i}>{ msg }</li></span>)
+							return(<li key={i}>
+								<span className="d-block p-2 bg-primary text-white">
+									{ msg }
+								</span>
+							</li>)
 						})
 					}
 				</ol>

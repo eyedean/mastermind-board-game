@@ -10,21 +10,17 @@ class MainBoard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { page: "INTRO", feedback: [] };
-		this.configs = {
-			NumberOfItems: 4,
-			MaximumOptions : 7,
-			MaximumAttempts : 10
-		}
-		this.controller = new GameController(this.configs);
+
+		this.controller = new GameController();
 		this.onSubmitCallback = this.onSubmitCallback.bind(this);
 		this.onReplayCallback = this.onReplayCallback.bind(this);
 		this.onDifficultyCallback = this.onDifficultyCallback.bind(this);
 	
 	}
 
-	initialize() {
-		this.setState({ page: "LOADING" })
-		this.controller.setUp().then(() =>
+	initialize(level) {
+		this.setState({ page: "LOADING" });
+		this.controller.setUp(level).then(() =>
 			this.setState({ page: "GAME", feedback:[] })
 		);
 	}
@@ -37,15 +33,12 @@ class MainBoard extends React.Component {
 	}
 
 	onReplayCallback() {
-		this.initialize()
+		this.setState({ page: "INTRO" });
 	}
 	
 	onDifficultyCallback(level) { // "EASY", "MEDIUM", "HARD"
 		console.log(`Setting level to: ${level}`);
-		// const result = this.controller.chooseLevel(input);
-		// this.setState({
-			
-		// });
+		this.initialize(level);
 	}
 
 	render () {
@@ -59,12 +52,14 @@ class MainBoard extends React.Component {
 			</div>
 		) : (
 			<div style={{background: `url(${numbersImg})`, minHeight: '100vh'}}>
+				Select {this.controller.getNumberOfItems()} numbers between 0 and 
+				{this.controller.getMaxOptions()} inclusive.
 				<table>
 					<tbody>
 		
 						<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
 							<td>
-							<Keypad maxlength={this.configs.NumberOfItems} 
+							<Keypad maxlength={this.controller.getNumberOfItems()} 
 								onSubmitCallback={this.onSubmitCallback} 
 							/>
 							</td>
