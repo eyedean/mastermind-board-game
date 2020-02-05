@@ -1,8 +1,7 @@
 import React from 'react';
 
-
 class Replay extends React.Component {
-	constructor(props) {// props are resetSetup and resetRemainder ??
+	constructor(props) {
 		super(props);
 		this.state = {};
 

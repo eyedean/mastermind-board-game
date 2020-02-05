@@ -20,10 +20,15 @@ class MainBoard extends React.Component {
 	
 	}
 
-	componentDidMount() {
+	initialize() {
+		this.setState({ loading: true})
 		this.controller.setUp().then(() =>
-			this.setState({ loading: false})
+			this.setState({ loading: false, feedback:[] })
 		);
+	}
+
+	componentDidMount() {
+		this.initialize();
 	}
 
 	onSubmitCallback(input) {
@@ -34,10 +39,7 @@ class MainBoard extends React.Component {
 	}
 
 	onReplayCallback() {
-		this.setState({ loading: true})
-		this.controller.setUp().then(() =>
-			this.setState({ loading: false, feedback:[] })
-		);
+		this.initialize()
 	}
 	
 
