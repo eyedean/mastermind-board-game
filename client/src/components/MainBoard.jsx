@@ -1,6 +1,7 @@
 import React from 'react';
 import Keypad from './Keypad';
 import Feedback from './Feedback';
+import Replay from './Replay';
 import GameController from '../controllers/GameController';
 
 
@@ -14,7 +15,9 @@ class MainBoard extends React.Component {
 			MaximumAttempts : 10
 		}
 		this.controller = new GameController(this.configs);
-		this.onSubmitCallback = this.onSubmitCallback.bind(this);	
+		this.onSubmitCallback = this.onSubmitCallback.bind(this);
+		this.onReplayCallback = this.onReplayCallback.bind(this);
+	
 	}
 
 	componentDidMount() {
@@ -30,7 +33,13 @@ class MainBoard extends React.Component {
 		});
 	}
 
-
+	onReplayCallback() {
+		this.setState({ loading: true})
+		this.controller.setUp().then(() =>
+			this.setState({ loading: false, feedback:[] })
+		);
+	}
+	
 
 	render () {
 		return this.state.loading ? (
@@ -53,9 +62,14 @@ class MainBoard extends React.Component {
 							/>
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<Replay onReplayCallback={this.onReplayCallback}/>
+							</td>
+						</tr>
 					</tbody>
 				</table>
-				<div></div>
+				
 			</div>
 		)
 	}

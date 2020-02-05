@@ -1,17 +1,23 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default class GameController {
+	
 	constructor(configs) {
-		this.secret = [];
 		this.N = configs.NumberOfItems;
 		this.K = configs.MaximumOptions;
-		this.attemptsRemained = configs.MaximumAttempts;
+		this.maxAttemptsReset = configs.MaximumAttempts;
+		this.secret = [];
 		this.hasWon = false;
 		this.hasLost = false;
+		this.attemptsRemained = 0;
 	}
 
 
 	setUp() {
+		this.attemptsRemained = this.maxAttemptsReset;
+		this.hasWon = false;
+		this.hasLost = false;
+		
 		const queryParams = {
 			num: 4,
 			min: 0,
@@ -25,7 +31,7 @@ export default class GameController {
 		const url = "https://www.random.org/integers/?"
 			+ Object.keys(queryParams).map(key => key + '=' + queryParams[key]).join('&');
 		
-			return axios.get(url)
+		return axios.get(url)
 			.then((response) => {
 				const result = response.data
 					.trim()

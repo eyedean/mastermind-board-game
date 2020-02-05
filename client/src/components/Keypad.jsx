@@ -34,7 +34,6 @@ class Keypad extends React.Component {
 							   />
 					</label>
 					<input type="submit" value="Submit" onClick={this.handleSubmit}/>
-					<input type="submit" value="Play Again" onClick={this.playAgain}/>
 				</form>
 			</div>
 		);
