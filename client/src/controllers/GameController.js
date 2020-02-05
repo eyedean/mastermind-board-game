@@ -110,6 +110,30 @@ export default class GameController {
 		return `You have got ${exact} exact(s), and ${partial} partial(s) for ${inputString}!` + emojis[exact + partial];
 	}
 
+	chooseLevel() {
+		
+		const easy = "";
+		this.configs = {
+			NumberOfItems: 4,
+			MaximumOptions : 7,
+			MaximumAttempts : 10
+		}
+
+		const medium ="";
+		this.configs = {
+			NumberOfItems: 4,
+			MaximumOptions : 7,
+			MaximumAttempts : 7
+		}
+
+		const hard ="";
+		this.configs = {
+			NumberOfItems: 5,
+			MaximumOptions : 10,
+			MaximumAttempts : 10
+		}
+	}
+
 };
 
 
