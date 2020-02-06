@@ -139,7 +139,7 @@ export default class GameController {
 			return `You Lost... 🙄 It was ${secretString}!`;
 		}
 
-		const emojis = ["🤭", "🤔", "😇", "😉", "🤩"];
+		const emojis = ["🤭", "🤔", "😇", "😉", "🤩", "🤗"]; // when N = 5, we can have exact+partial being 5;
 		return `You have got ${exact} exact(s), and ${partial} partial(s) for ${inputString}!` + emojis[exact + partial];
 	}
 };
