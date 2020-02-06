@@ -23,16 +23,18 @@ class Keypad extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Mastermind Game</h1>
-				<h3>Guess The Number</h3>
+			<div className="keypad">
+				<h2>Welcome to MasterMind!</h2>
+				<h4>Guess The Number!</h4>
+				Enter {this.props.maxLength} numbers, between 0 and {this.props.maxOptions} (inclusive).
 				<form onSubmit={this.handleSubmit}>
 					<label>
-						<input maxLength={this.props.maxlength} 
-							   autoFocus value={this.state.value} 
-							   onChange={this.handleChange} 
-							   style={{border: "1px solid gray", fontSize: "18px", width: "100px", margin: "10px"}}
-							   />
+						<input
+							className="guess"
+							maxLength={this.props.maxLength} 
+							autoFocus value={this.state.value} 
+							onChange={this.handleChange} 
+						/>
 					</label>
 					<input type="submit" value="Submit" onClick={this.handleSubmit}/>
 				</form>

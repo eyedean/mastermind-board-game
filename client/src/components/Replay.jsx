@@ -15,8 +15,11 @@ class Replay extends React.Component {
 
 	render() {
 		return ( 
-			<div>
-				<input type="button" className="btn btn-success btn-lg btn-block" value="Play Again" onClick={this.handleReplay} />
+			<div className="replay">
+				<input type="button" value="Play Again" onClick={this.handleReplay} />
+				<div>
+					Remained Attempt(s): {this.props.remainedAttempts}
+				</div>
 			</div>
 		
 		)

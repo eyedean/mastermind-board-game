@@ -17,6 +17,7 @@ class MainBoard extends React.Component {
 		this.onReplayCallback = this.onReplayCallback.bind(this);
 		this.onDifficultyCallback = this.onDifficultyCallback.bind(this);
 	
+		this.onDifficultyCallback("MEDIUM");
 	}
 
 	initialize(level) {
@@ -46,7 +47,6 @@ class MainBoard extends React.Component {
 		return (
 			<div className="wrapper" style={{background: `url(${numbersImg})`}}>
 				{ this.state.page === "LOADING" ? (
-
 					<div className="loading">
 						<img src={loadingImg} width="150px" />
 					</div>
@@ -54,28 +54,30 @@ class MainBoard extends React.Component {
 					<Difficulty onDifficultyCallback={this.onDifficultyCallback} />
 				) : (
 					<div>
-						Select {this.controller.getNumberOfItems()} numbers between 0 and 
-						{this.controller.getMaxOptions()} inclusive.
-						<table>
+						<table className="mainTable">
 							<tbody>
-				
 								<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
 									<td>
-									<Keypad maxlength={this.controller.getNumberOfItems()} 
+									<Keypad
+										maxLength={this.controller.getNumberOfItems()} 
+										maxOptions={this.controller.getMaxOptions()}
 										onSubmitCallback={this.onSubmitCallback} 
 									/>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<Feedback message={this.state.feedback} 
-												remainedAttempts={this.controller.getRemainedAttempts()}
+										<Feedback
+											messages={this.state.feedback} 
 										/>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<Replay onReplayCallback={this.onReplayCallback}/>
+										<Replay
+											remainedAttempts={this.controller.getRemainedAttempts()} 
+											onReplayCallback={this.onReplayCallback}
+										/>
 									</td>
 								</tr>
 							</tbody>
