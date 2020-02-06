@@ -1,0 +1,32 @@
+body {
+	font-size: 14px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.wrapper {
+	min-height: 100vh;
+	width: 100%;
+	padding: 20px;
+}
+
+.wrapper > div {
+	width: 75%;
+	margin: 0 auto;
+	border: 1px solid #AAA;
+	border-radius: 20px;
+	box-shadow: black;
+	text-align: center;
+	background: rgba(254, 229, 173, 0.9);
+	padding: 20px;
+}
+
+.difficulty input {
+	margin: 10px;
+	width: 150px;
+	background: #F7A541;
+	padding: 10px;
+}
+
+.difficulty h2 {
+	margin-bottom: 50px;
+}

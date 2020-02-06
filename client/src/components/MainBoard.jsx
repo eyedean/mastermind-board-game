@@ -42,43 +42,43 @@ class MainBoard extends React.Component {
 	}
 
 	render () {
-		return this.state.page === "LOADING" ? (
-			<div>Loading...</div>
-		) : this.state.page === "INTRO" ? (
-			<div>
-				<h2>Intro</h2>
-				<Difficulty onDifficultyCallback={this.onDifficultyCallback}			
-				/>
-			</div>
-		) : (
-			<div style={{background: `url(${numbersImg})`, minHeight: '100vh'}}>
-				Select {this.controller.getNumberOfItems()} numbers between 0 and 
-				{this.controller.getMaxOptions()} inclusive.
-				<table>
-					<tbody>
-		
-						<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
-							<td>
-							<Keypad maxlength={this.controller.getNumberOfItems()} 
-								onSubmitCallback={this.onSubmitCallback} 
-							/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<Feedback message={this.state.feedback} 
-										 remainedAttempts={this.controller.getRemainedAttempts()}
-								/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<Replay onReplayCallback={this.onReplayCallback}/>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		return (
+			<div className="wrapper" style={{background: `url(${numbersImg})`}}>
+				{ this.state.page === "LOADING" ? (
+					<div>Loading...</div>
+				) : this.state.page === "INTRO" ? (
+					<Difficulty onDifficultyCallback={this.onDifficultyCallback} />
+				) : (
+					<div>
+						Select {this.controller.getNumberOfItems()} numbers between 0 and 
+						{this.controller.getMaxOptions()} inclusive.
+						<table>
+							<tbody>
 				
+								<tr style={{display: this.controller.isOver() ? 'none' : 'auto'}}>
+									<td>
+									<Keypad maxlength={this.controller.getNumberOfItems()} 
+										onSubmitCallback={this.onSubmitCallback} 
+									/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<Feedback message={this.state.feedback} 
+												remainedAttempts={this.controller.getRemainedAttempts()}
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<Replay onReplayCallback={this.onReplayCallback}/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				)}
 			</div>
 		)
 	}
