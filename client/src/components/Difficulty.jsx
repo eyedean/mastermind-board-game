@@ -18,8 +18,8 @@ class Difficulty extends React.Component {
 		return(
 			<div className="difficulty">
 				<h2>Welcome to MasterMind!</h2>
-				Choose Difficulty Level to Start!
-				<br />< br />
+				<h4>Choose Difficulty Level to Start!</h4>
+				<br />
 				<input type="submit" value="EASY" onClick={this.handleLevel}/>
 				<input type="submit" value="MEDIUM" onClick={this.handleLevel}/>
 				<input type="submit" value="HARD" onClick={this.handleLevel}/>

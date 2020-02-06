@@ -14,17 +14,23 @@ body {
 	margin: 0 auto;
 	border: 1px solid #AAA;
 	border-radius: 20px;
-	box-shadow: black;
 	text-align: center;
 	background: rgba(254, 229, 173, 0.9);
 	padding: 20px;
 }
 
+div.loading {
+	background: white;
+	height: 300px;
+	padding-top: 75px;
+}
+
 .difficulty input {
 	margin: 10px;
-	width: 150px;
+	width: 120px;
 	background: #F7A541;
 	padding: 10px;
+	border-radius: 15px;
 }
 
 .difficulty h2 {

@@ -5,6 +5,7 @@ import Replay from './Replay';
 import Difficulty from './Difficulty';
 import GameController from '../controllers/GameController';
 import numbersImg from '../img/numbers.jpg';
+import loadingImg from '../img/spinner.gif';
 
 class MainBoard extends React.Component {
 	constructor(props) {
@@ -45,7 +46,10 @@ class MainBoard extends React.Component {
 		return (
 			<div className="wrapper" style={{background: `url(${numbersImg})`}}>
 				{ this.state.page === "LOADING" ? (
-					<div>Loading...</div>
+
+					<div className="loading">
+						<img src={loadingImg} width="150px" />
+					</div>
 				) : this.state.page === "INTRO" ? (
 					<Difficulty onDifficultyCallback={this.onDifficultyCallback} />
 				) : (
