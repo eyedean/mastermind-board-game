@@ -16,14 +16,6 @@ class MainBoard extends React.Component {
 		this.onSubmitCallback = this.onSubmitCallback.bind(this);
 		this.onReplayCallback = this.onReplayCallback.bind(this);
 		this.onDifficultyCallback = this.onDifficultyCallback.bind(this);
-	
-		//TODO: remove me, I am for simulation only!
-		// this.onDifficultyCallback("MEDIUM");
-		// window.setTimeout(() => { this.onSubmitCallback("1234"); }, 1000);
-		// window.setTimeout(() => { this.onSubmitCallback("5679"); }, 1000);
-		// window.setTimeout(() => { this.onSubmitCallback("5679"); }, 1000);
-		// window.setTimeout(() => { this.onSubmitCallback("5679"); }, 1000);
-		// window.setTimeout(() => { this.onSubmitCallback("5679"); }, 1000);
 	}
 
 	initialize(level) {
@@ -88,7 +80,6 @@ class MainBoard extends React.Component {
 								</tr>
 							</tbody>
 						</table>
-						
 					</div>
 				)}
 			</div>

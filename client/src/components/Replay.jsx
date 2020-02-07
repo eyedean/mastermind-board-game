@@ -21,7 +21,6 @@ class Replay extends React.Component {
 					Remained Attempt(s): {this.props.remainedAttempts}
 				</div>
 			</div>
-		
 		)
 	}
 }
