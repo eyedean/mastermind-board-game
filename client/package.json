@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"engine": {
+		"npm":"6.12.0",
+		"node":"12.4.0"
+	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build"
