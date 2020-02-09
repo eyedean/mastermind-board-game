@@ -25,6 +25,16 @@ div.loading {
 	padding-top: 75px;
 }
 
+h2 {
+	margin-bottom: 30px;
+}
+
+.mainTable {
+	width: 100%;
+}
+
+/* ~~~~~~~~~~~ Inputs ~~~~~~~~~~~~ */
+
 input {
 	margin: 10px;
 	width: 120px;
@@ -44,14 +54,6 @@ input[type=submit] {
 	border: 1px solid gray;
 	font-size: 18px;
 	border-radius: 0;
-}
-
-h2 {
-	margin-bottom: 30px;
-}
-
-.mainTable {
-	width: 100%;
 }
 
 /* ~~~~~~~~~~~ Replay ~~~~~~~~~~~~ */

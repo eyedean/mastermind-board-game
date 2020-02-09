@@ -13,6 +13,8 @@ class MainBoard extends React.Component {
 		this.state = { page: "INTRO", feedback: [] };
 
 		this.controller = new GameController();
+
+		// Binding callback functions to this
 		this.onSubmitCallback = this.onSubmitCallback.bind(this);
 		this.onReplayCallback = this.onReplayCallback.bind(this);
 		this.onDifficultyCallback = this.onDifficultyCallback.bind(this);

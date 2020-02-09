@@ -87,11 +87,11 @@ export default class GameController {
 	}
 
 	evaluateInput(inputString) {
-		const input = inputString.split("").map((x) => parseInt(x, 10));
-
-		if(this.hasWon || this.hasLost) {
-			return " You can not have anymore tries";
+		if (this.isOver()) {
+			return "You can not have anymore tries";
 		}
+
+		const input = inputString.split("").map((x) => parseInt(x, 10));
 		
 		let exact = 0;
 		let partial = 0;

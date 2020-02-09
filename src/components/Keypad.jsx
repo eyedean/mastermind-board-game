@@ -30,6 +30,7 @@ class Keypad extends React.Component {
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						<input
+							type="number"
 							className="guess"
 							maxLength={this.props.maxLength} 
 							autoFocus value={this.state.value} 
